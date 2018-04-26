@@ -20,8 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->smallInteger('is_active')->default(0);
             $table->string('confirmation_token');
-            $table->string('avarta');
             $table->json('settings')->nullable();
+            $table->string('avarta');
             $table->rememberToken();
             $table->timestamps();
         });

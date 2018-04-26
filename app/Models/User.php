@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Mail\ResetPassword;
 use App\Mail\VerifyMail;
@@ -14,7 +14,7 @@ class User extends Authenticatable
 
     /**
      * The attributes that are mass assignable.
-     *
+     *AA
      * @var array
      */
     protected $fillable = [

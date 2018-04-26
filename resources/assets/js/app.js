@@ -7,6 +7,10 @@
 
 require('./bootstrap');
 
+require('./select2.min');
+
+require('./semantic.min');
+
 window.Vue = require('vue');
 
 /**
