@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title> @yield('title', config('app.name', 'Laravel'))</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
@@ -78,6 +78,8 @@
 <body>
 
         @include('layouts._header')
+
+        @include('layouts._message')
 
         @yield('content')
 
