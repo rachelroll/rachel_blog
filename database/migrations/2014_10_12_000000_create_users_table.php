@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->smallInteger('is_active')->default(0);
             $table->string('confirmation_token');
             $table->json('settings')->nullable();
-            $table->string('avarta')->nullable();
+            $table->string('avatar')->nullable();
             $table->string('introduction')->nullable();
             $table->rememberToken();
             $table->timestamps();
