@@ -27,3 +27,5 @@ Route::resource('users', 'UsersController', ['only'=>['show', 'update', 'edit']]
 
 
 Route::resource('posts', 'PostsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+
+Route::resource('categories', 'CategoriesController', ['only' => ['show']]);

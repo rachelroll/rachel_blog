@@ -10,9 +10,13 @@
                     分类
                     <i class="dropdown icon"></i>
                     <div class="menu">
-                        <a href="post.html" class="item">English</a>
-                        <a href="post.html" class="item">Russian</a>
-                        <a href="post.html" class="item">Spanish</a>
+                        <a href="{{ route('categories.show', 1) }}" class="item">PHP</a>
+                        <a href="{{ route('categories.show', 2) }}" class="item">Laravel</a>
+                        <a href="{{ route('categories.show', 3) }}" class="item">Mysql</a>
+                        <a href="{{ route('categories.show', 4) }}" class="item">个人</a>
+                        <a href="{{ route('categories.show', 5) }}" class="item">JS</a>
+                        <a href="{{ route('categories.show', 6) }}" class="item">IDE</a>
+                        <a href="{{ route('categories.show', 7) }}" class="item">Linux</a>
                     </div>
                 </div>
             </div>
