@@ -4,7 +4,7 @@ namespace App\Models;
 
 class Post extends Model
 {
-    protected $fillable = ['title', 'body', 'user_id', 'category_id', 'reply_count', 'view_count', 'last_reply_user_id', 'order', 'excerpt', 'slug'];
+    protected $fillable = ['title', 'body', 'category_id', 'excerpt', 'slug', 'user_id'];
 
     public function user()
     {
@@ -15,6 +15,12 @@ class Post extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function scopeGuolv($query)
+    {
+        return $query->where('id','>=',2)->where('user_id','<',6)->where('category_id','=',7);
+    }
+
 
     public function scopeWithOrder($query, $order)
     {

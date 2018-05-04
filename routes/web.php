@@ -14,7 +14,7 @@
 use App\Mail\TestMail;
 use Illuminate\Support\Facades\Mail;
 
-Route::get('/', 'PostController@index');
+Route::get('/', 'PostsController@index');
 
 Auth::routes();
 

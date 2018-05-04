@@ -32,18 +32,22 @@
                 <i class="user icon"></i>
                 关于
             </a>
-            @guest
-            <div class="right menu">
 
-                <a href="{{ route('login') }}" class="ui item">
-                    登录
-                </a>
-                <a href="{{ route('register') }}" class="ui item">
-                    注册
-                </a>
-            </div>
-            @else
+
+
             <div class="right  menu">
+                @guest
+                    <a href="{{ route('login') }}" class="ui item">
+                        登录
+                    </a>
+                    <a href="{{ route('register') }}" class="ui item">
+                        注册
+                    </a>
+                @else
+                    <a href="{{ route('posts.create') }}">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </a>
+
                 <div class="ui dropdown  item">
 
                     <span class="user-avatar pull-left" style="margin-right:8px; margin-top:-5px;">
@@ -54,6 +58,10 @@
                     <div class="menu">
                         <a class="item" href="{{ route('users.edit', Auth::id() ) }}">
                             编辑资料
+                        </a>
+
+                        <a class="item" href="{{ route('users.show', Auth::id() ) }}">
+                            个人中心
                         </a>
 
                         <a class="item" href="{{ route('logout') }}"

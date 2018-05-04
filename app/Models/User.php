@@ -41,4 +41,9 @@ class User extends Authenticatable
         Mail::to($this->email)->queue(new ResetPassword($data));
 
     }
+
+    public function post()
+    {
+        return $this->hasMany(Post::class);
+    }
 }

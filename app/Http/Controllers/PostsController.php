@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
+use Auth;
 
 class PostsController extends Controller
 {
@@ -16,23 +18,30 @@ class PostsController extends Controller
 
 	public function index(Request $request)
 	{
-		$posts = Post::withOrder($request->order)->paginate(20);
+	    $posts = Post::withOrder($request->order)->paginate(20);
 		return view('posts.index', compact('posts'));
 	}
 
     public function show(Post $post)
     {
+        $posts = Post::where('id','>=',2)->where('user_id','<',6)->where('category_id','=',7)->get();
+
         return view('posts.show', compact('post'));
     }
 
 	public function create(Post $post)
 	{
-		return view('posts.create_and_edit', compact('post'));
+	    $categories = Category::all();
+		return view('posts.create_and_edit', compact('post', 'categories'));
 	}
 
 	public function store(PostRequest $request)
 	{
-		$post = Post::create($request->all());
+	    $post = $request->all();
+
+	    $new_post = array_merge($post, ['user_id' => Auth::id()]);
+
+	    $post = Post::create($new_post);
 		return redirect()->route('posts.show', $post->id)->with('message', 'Created successfully.');
 	}
 
