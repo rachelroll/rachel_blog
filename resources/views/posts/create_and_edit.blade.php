@@ -35,8 +35,12 @@
                 	<input class="form-control" type="text" name="title" placeholder="请填写标题" id="title-field" value="{{ old('title', $post->title ) }}" />
                 </div> 
                 <div class="form-group">
-                	<label for="body-field">内容</label>
-                	<textarea name="body" placeholder="请填写至少3个字的内容" body-field" class="form-control" rows="3">{{ old('body', $post->body ) }}</textarea>
+                	{{--<label for="body-field">内容</label>--}}
+                	{{--<textarea name="body" placeholder="请填写至少3个字的内容" body-field" class="form-control" rows="3">{{ old('body', $post->body ) }}</textarea>--}}
+
+                    <!-- 编辑器容器 -->
+                        <script id="editor" name="body" type="text/plain">
+                        </script>
                 </div>
 
                         <div class="form-group">
@@ -60,3 +64,6 @@
 </div>
 
 @endsection
+
+
+

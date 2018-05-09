@@ -5,7 +5,7 @@
                 <img src="{{ $post->user->avatar }}">
             </div>
             <div class="content">
-                <a class="header" href="{{ route('posts.show', [$post->id]) }}">{{ $post->title }}</a>
+                <a class="header" href="{{ $post->link() }}">{{ $post->title }}</a>
                 <div class="meta">
                     <a href="{{ route('categories.show', [$post->category->id]) }}" class="ui orange tag label" >{{ $post->category->name }}</a>
                     &nbsp;
@@ -34,7 +34,7 @@
                 <div class="extra">
                     <div class="ui label">PHP</div>
                     <div class="ui label"><i class="globe icon"></i>Javascript</div>
-                    <a href="{{ route('posts.show', [$post->id]) }}">
+                    <a href="{{ $post->link() }}">
                         <div class="ui right floated primary button">
                             阅读全文
                             <i class="right chevron icon"></i>

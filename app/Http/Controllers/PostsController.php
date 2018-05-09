@@ -22,10 +22,11 @@ class PostsController extends Controller
 		return view('posts.index', compact('posts'));
 	}
 
-    public function show(Post $post)
+    public function show(Post $post, Request $request)
     {
-        $posts = Post::where('id','>=',2)->where('user_id','<',6)->where('category_id','=',7)->get();
-
+        if( !empty($post->slug) && $post->slug != $request->slug) {
+            return redirect($post->link(), 301);
+        }
         return view('posts.show', compact('post'));
     }
 
@@ -42,13 +43,14 @@ class PostsController extends Controller
 	    $new_post = array_merge($post, ['user_id' => Auth::id()]);
 
 	    $post = Post::create($new_post);
-		return redirect()->route('posts.show', $post->id)->with('message', 'Created successfully.');
+		return redirect()->to($post->link())->with('message', '发布成功.');
 	}
 
 	public function edit(Post $post)
 	{
         $this->authorize('update', $post);
-		return view('posts.create_and_edit', compact('post'));
+        $categories = Category::all();
+		return view('posts.create_and_edit', compact('post', 'categories'));
 	}
 
 	public function update(PostRequest $request, Post $post)
@@ -56,7 +58,7 @@ class PostsController extends Controller
 		$this->authorize('update', $post);
 		$post->update($request->all());
 
-		return redirect()->route('posts.show', $post->id)->with('message', 'Updated successfully.');
+		return redirect()->to($post->link())->with('message', '更新成功.');
 	}
 
 	public function destroy(Post $post)
@@ -64,6 +66,6 @@ class PostsController extends Controller
 		$this->authorize('destroy', $post);
 		$post->delete();
 
-		return redirect()->route('posts.index')->with('message', 'Deleted successfully.');
+		return redirect()->route('posts.index')->with('message', '删除成功.');
 	}
 }

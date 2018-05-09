@@ -3,7 +3,7 @@
     <ul class="list-group">
         @foreach ($posts as $post)
             <li class="list-group-item">
-                <a href="{{ $post->link() }}">
+                <a href="{{ $posts->links() }}">
                     {{ $post->title }}
                 </a>
                 <span class="meta pull-right">

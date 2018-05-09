@@ -74,9 +74,11 @@
 
 
     </style>
+
+
 </head>
 <body>
-
+        @include('vendor.ueditor.assets')
         @include('layouts._header')
 
         @include('layouts._message')
@@ -111,12 +113,26 @@
                 $('.main.menu  .ui.dropdown').dropdown({
                     on: 'hover'
                 });
-            })
-        ;
+            });
 
     </script>
         <script>
             $('.ui.dropdown').dropdown();
+        </script>
+
+        <!-- 实例化编辑器 -->
+        <script type="text/javascript">
+            var ue = UE.getEditor('editor', {
+                toolbars: [
+                    ['bold', 'italic', 'underline', 'strikethrough', 'blockquote', 'insertunorderedlist', 'insertorderedlist', 'justifyleft','justifycenter', 'justifyright',  'link', 'insertimage', 'fullscreen']
+                ],
+                elementPathEnabled: false,
+                enableContextMenu: false,
+                autoClearEmptyNode:true,
+                wordCount:false,
+                imagePopup:false,
+                autotypeset:{ indent: true,imageBlockLine: 'center' }
+            });
         </script>
 </body>
 </html>
