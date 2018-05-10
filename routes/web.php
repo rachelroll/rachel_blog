@@ -28,6 +28,6 @@ Route::resource('users', 'UsersController', ['only'=>['show', 'update', 'edit']]
 
 Route::resource('posts', 'PostsController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);
 
-Route::get('posts/{post}/{?slug}', 'PostsController@show')->name('posts.show');
+Route::get('posts/{post}/{slug?}', 'PostsController@show')->name('posts.show');
 
 Route::resource('categories', 'CategoriesController', ['only' => ['show']]);

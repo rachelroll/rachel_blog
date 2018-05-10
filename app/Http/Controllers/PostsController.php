@@ -41,7 +41,6 @@ class PostsController extends Controller
 	    $post = $request->all();
 
 	    $new_post = array_merge($post, ['user_id' => Auth::id()]);
-
 	    $post = Post::create($new_post);
 		return redirect()->to($post->link())->with('message', '发布成功.');
 	}
