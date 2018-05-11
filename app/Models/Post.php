@@ -16,6 +16,11 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function reply()
+    {
+        return $this->hasMany(Reply::class);
+    }
+
     public function scopeGuolv($query)
     {
         return $query->where('id','>=',2)->where('user_id','<',6)->where('category_id','=',7);

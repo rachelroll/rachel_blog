@@ -22,9 +22,12 @@ Route::get('/email/verify/{token}', 'EmailController@verify')->name('email.verif
 
 Route::resource('users', 'UsersController', ['only'=>['show', 'update', 'edit']]);
 
-
-
-
+Route::resource('replies', 'RepliesController', [
+    'only' => [
+        'store',
+        'destroy',
+    ],
+]);
 
 Route::resource('posts', 'PostsController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);
 

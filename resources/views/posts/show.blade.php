@@ -65,12 +65,12 @@
             </div>
 
             {{-- 用户回复列表 --}}
-            {{--<div class="panel panel-default post-reply">--}}
-                {{--<div class="panel-body">--}}
-                    {{--@includeWhen(Auth::check(), 'posts._reply_box', ['post' => $post])--}}
-                    {{--@include('posts._reply_list', ['replies' => $post->replies()->with('user')->get()])--}}
-                {{--</div>--}}
-            {{--</div>--}}
+            <div class="panel panel-default post-reply">
+                <div class="panel-body">
+                    @includeWhen(Auth::check(), 'posts._reply_box', ['post' => $post])
+                    @include('posts._reply_list', ['replies' => $post->reply()->with('user')->get()])
+                </div>
+            </div>
         </div>
     </div>
 @stop
