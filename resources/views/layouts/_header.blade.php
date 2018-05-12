@@ -10,9 +10,13 @@
                     分类
                     <i class="dropdown icon"></i>
                     <div class="menu">
-                        <a href="post.html" class="item">English</a>
-                        <a href="post.html" class="item">Russian</a>
-                        <a href="post.html" class="item">Spanish</a>
+                        <a href="{{ route('categories.show', 1) }}" class="item">PHP</a>
+                        <a href="{{ route('categories.show', 2) }}" class="item">Laravel</a>
+                        <a href="{{ route('categories.show', 3) }}" class="item">Mysql</a>
+                        <a href="{{ route('categories.show', 4) }}" class="item">个人</a>
+                        <a href="{{ route('categories.show', 5) }}" class="item">JS</a>
+                        <a href="{{ route('categories.show', 6) }}" class="item">IDE</a>
+                        <a href="{{ route('categories.show', 7) }}" class="item">Linux</a>
                     </div>
                 </div>
             </div>
@@ -28,18 +32,31 @@
                 <i class="user icon"></i>
                 关于
             </a>
-            @guest
-            <div class="right menu">
 
-                <a href="{{ route('login') }}" class="ui item">
-                    登录
-                </a>
-                <a href="{{ route('register') }}" class="ui item">
-                    注册
-                </a>
-            </div>
-            @else
+
+
             <div class="right  menu">
+                @guest
+                    <a href="{{ route('login') }}" class="ui item">
+                        登录
+                    </a>
+                    <a href="{{ route('register') }}" class="ui item">
+                        注册
+                    </a>
+                @else
+                    <a href="{{ route('posts.create') }}">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </a>
+
+                    {{-- 消息通知标记 --}}
+                    <div>
+                        <a href="{{ route('notifications.index') }}" class="notifications-badge" style="margin-top: -2px;">
+                            <span class="badge badge-{{ Auth::user()->notification_count > 0 ? 'hint' : 'fade' }} " title="消息提醒">
+                                {{ Auth::user()->notification_count }}
+                            </span>
+                        </a>
+                    </div>
+
                 <div class="ui dropdown  item">
 
                     <span class="user-avatar pull-left" style="margin-right:8px; margin-top:-5px;">
@@ -50,6 +67,10 @@
                     <div class="menu">
                         <a class="item" href="{{ route('users.edit', Auth::id() ) }}">
                             编辑资料
+                        </a>
+
+                        <a class="item" href="{{ route('users.show', Auth::id() ) }}">
+                            个人中心
                         </a>
 
                         <a class="item" href="{{ route('logout') }}"
