@@ -34,3 +34,34 @@ Route::resource('posts', 'PostsController', ['only' => ['index', 'create', 'stor
 Route::get('posts/{post}/{slug?}', 'PostsController@show')->name('posts.show');
 
 Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
+
+Route::resource('notifications', 'NotificationsController', [
+    'only' => [
+        'index',
+    ],
+]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
