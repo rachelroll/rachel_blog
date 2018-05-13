@@ -65,7 +65,8 @@ class LoginController extends Controller
 
     protected function attemptLogin(Request $request)
     {
-        $credentials = array_merge($this->credentials($request), ['is_active' => 1]);
+        //这行代码的意思是  验证了邮箱才能登陆,所以线去掉把
+        $credentials = array_merge($this->credentials($request));
         return $this->guard()->attempt(
             $credentials, $request->filled('remember')
         );
