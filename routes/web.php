@@ -12,7 +12,7 @@
 */
 
 
-Route::get('/', 'PostsController@index');
+Route::get('/', 'PostsController@index')->name('index');
 
 
 //注册登陆相关
@@ -52,6 +52,14 @@ Route::resource('notifications', 'NotificationsController', [
         'index',
     ],
 ]);
+
+//标签页面
+Route::get('tags','TagsController@index')->name('tags.index');
+
+//时间轴 归档
+Route::get('timeline','TimelineController@index')->name('timeline.index');
+//关于
+Route::get('about','AboutController@index')->name('about.index');
 
 
 

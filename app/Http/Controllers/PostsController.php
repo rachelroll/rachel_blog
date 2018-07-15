@@ -18,6 +18,7 @@ class PostsController extends Controller
 
 	public function index(Request $request)
 	{
+
 	    $posts = Post::withOrder($request->order)->paginate(20);
 		return view('posts.index', compact('posts'));
 	}

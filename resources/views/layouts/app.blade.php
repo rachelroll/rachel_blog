@@ -9,75 +9,16 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title> @yield('title', config('app.name', 'Laravel'))</title>
+    @yield('css')
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
-    <style type="text/css">
-
-        body {
-            background-color: #FFFFFF;
-        }
-        .main.container {
-            margin-top: 2em;
-        }
-
-        .main.menu {
-            margin-top: 4em;
-            border-radius: 0;
-            border: none;
-            box-shadow: none;
-            transition:
-                    box-shadow 0.5s ease,
-                    padding 0.5s ease
-        ;
-        }
-        .main.menu .item img.logo {
-            margin-right: 1.5em;
-        }
-
-        .overlay {
-            float: left;
-            margin: 0em 3em 1em 0em;
-        }
-        .overlay .menu {
-            position: relative;
-            left: 0;
-            transition: left 0.5s ease;
-        }
-
-        .main.menu.fixed {
-            background-color: #FFFFFF;
-            border: 1px solid #DDD;
-            box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
-        }
-        .overlay.fixed .menu {
-            left: 800px;
-        }
-
-        .text.container .left.floated.image {
-            margin: 2em 2em 2em -4em;
-        }
-        .text.container .right.floated.image {
-            margin: 2em -4em 2em 2em;
-        }
-
-        .ui.footer.segment {
-            margin: 5em 0em 0em;
-            padding: 5em 0em;
-        }
-
-        .form-group img.captcha {
-                margin-bottom: 0;
-                margin-top: 10px;
-                cursor: pointer;
-            }
+    <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
 
 
-    </style>
-
+    @yield('style')
 
 </head>
-<body>
+<body class="Site">
         @include('vendor.ueditor.assets')
         @include('layouts._header')
 
@@ -89,7 +30,8 @@
 
     <!-- Scripts -->
     <script src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-    <script src="/js/semantic.min.js"></script>
+    <script src="/js/app.js"></script>
+    @yield('js')
     <script>
         $(document).ready(function() {
 
@@ -116,23 +58,25 @@
             });
 
     </script>
-        <script>
-            $('.ui.dropdown').dropdown();
-        </script>
+    <script>
+        $('.ui.dropdown').dropdown();
+    </script>
 
-        <!-- 实例化编辑器 -->
-        <script type="text/javascript">
-            var ue = UE.getEditor('editor', {
-                toolbars: [
-                    ['bold', 'italic', 'underline', 'strikethrough', 'blockquote', 'insertunorderedlist', 'insertorderedlist', 'justifyleft','justifycenter', 'justifyright',  'link', 'insertimage', 'fullscreen']
-                ],
-                elementPathEnabled: false,
-                enableContextMenu: false,
-                autoClearEmptyNode:true,
-                wordCount:false,
-                imagePopup:false,
-                autotypeset:{ indent: true,imageBlockLine: 'center' }
-            });
-        </script>
+    <!-- 实例化编辑器 -->
+    <script type="text/javascript">
+        var ue = UE.getEditor('editor', {
+            toolbars: [
+                ['bold', 'italic', 'underline', 'strikethrough', 'blockquote', 'insertunorderedlist', 'insertorderedlist', 'justifyleft','justifycenter', 'justifyright',  'link', 'insertimage', 'fullscreen']
+            ],
+            elementPathEnabled: false,
+            enableContextMenu: false,
+            autoClearEmptyNode:true,
+            wordCount:false,
+            imagePopup:false,
+            autotypeset:{ indent: true,imageBlockLine: 'center' }
+        });
+    </script>
+
+@yield('script')
 </body>
 </html>

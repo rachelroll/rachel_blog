@@ -1,6 +1,19 @@
 
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+/* raleway-regular */
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 100;
+  src: url('//lib.baomitu.com/fonts/raleway/raleway-regular.eot'); /* IE9 Compat Modes */
+  src: local('Raleway'), local('Raleway-Normal'),
+  url('//lib.baomitu.com/fonts/raleway/raleway-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('//lib.baomitu.com/fonts/raleway/raleway-regular.woff2') format('woff2'), /* Super Modern Browsers */
+  url('//lib.baomitu.com/fonts/raleway/raleway-regular.woff') format('woff'), /* Modern Browsers */
+  url('//lib.baomitu.com/fonts/raleway/raleway-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('//lib.baomitu.com/fonts/raleway/raleway-regular.svg#Raleway') format('svg'); /* Legacy iOS */
+}
+
 
 // Variables
 @import "variables";
@@ -12,5 +25,75 @@
 @import "../css/select2.min.css";
 
 //semantic
-@import "../css/semantic.min";
+@import "../css/semantic.min.css";
+
+.Site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: #FFFFFF;
+}
+#layout-content {
+  flex: 1;
+  display: flex;
+}
+.main.container {
+  margin-top: 2em;
+}
+
+.main.menu {
+  margin-top: 4em;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  transition:
+          box-shadow 0.5s ease,
+          padding 0.5s ease
+;
+}
+.main.menu .item img.logo {
+  margin-right: 1.5em;
+}
+
+.overlay {
+  float: left;
+  margin: 0em 3em 1em 0em;
+}
+.overlay .menu {
+  position: relative;
+  left: 0;
+  transition: left 0.5s ease;
+}
+
+.main.menu.fixed {
+  background-color: #FFFFFF;
+  border: 1px solid #DDD;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+}
+.overlay.fixed .menu {
+  left: 800px;
+}
+
+.text.container .left.floated.image {
+  margin: 2em 2em 2em -4em;
+}
+.text.container .right.floated.image {
+  margin: 2em -4em 2em 2em;
+}
+
+.ui.footer.segment {
+  margin: 5em 0em 0em;
+  padding: 5em 0em;
+}
+
+.form-group img.captcha {
+  margin-bottom: 0;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+#tags .button {
+  margin-bottom: 0.75em;
+}
+
 
