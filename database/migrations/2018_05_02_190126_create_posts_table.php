@@ -1,13 +1,14 @@
-               fdsd<?php
+fdsd<?php
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostsTable extends Migration 
+class CreatePostsTable extends Migration
 {
-	public function up()
-	{
-		Schema::create('posts', function(Blueprint $table) {
+
+    public function up()
+    {
+        Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title')->index();
             $table->text('body');
@@ -17,14 +18,15 @@ class CreatePostsTable extends Migration
             $table->integer('view_count')->unsigned()->default(0);
             $table->integer('last_reply_user_id')->unsigned()->default(0);
             $table->integer('order')->unsigned()->default(0);
-            $table->text('excerpt');
+            $table->string('excerpt');
+            $table->string('thumb')->default('')->comment('缩略图');
             $table->string('slug')->nullable();
             $table->timestamps();
         });
-	}
+    }
 
-	public function down()
-	{
-		Schema::drop('posts');
-	}
+    public function down()
+    {
+        Schema::drop('posts');
+    }
 }

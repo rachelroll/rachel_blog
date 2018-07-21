@@ -1,8 +1,10 @@
 <div class="ui divided items ross_margin">
     @foreach($posts as $post)
         <div class="item">
-            <div class="image">
-                <img src="{{ $post->user->avatar }}">
+            <div class="image ui">
+                <a href="{{ $post->link() }}">
+                    <img class="ui image small" src="{{ $post->thumb }}">
+                </a>
             </div>
             <div class="content">
                 <a class="header" href="{{ $post->link() }}">{{ $post->title }}</a>
@@ -44,9 +46,7 @@
             </div>
         </div>
         <div class="br"><br /><br /></div>
-@endforeach
-
-
+    @endforeach
 
 <!--pagination-->
 {{ $posts->links() }}

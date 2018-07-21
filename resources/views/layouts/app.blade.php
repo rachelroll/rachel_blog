@@ -23,8 +23,9 @@
         @include('layouts._header')
 
         @include('layouts._message')
-
-        @yield('content')
+        <div id="layout-content">
+            @yield('content')
+        </div>
 
         @include('layouts._footer')
 
